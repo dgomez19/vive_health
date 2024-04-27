@@ -5,14 +5,56 @@ services:
       context: ./auth/
     image: auth
     container_name: auth
-    command: sh -c 'python /app/manage.py migrate && python /app/manage.py runserver 0.0.0.0:8001'
+    command: sh -c 'python /app/manage.py makemigrations && python /app/manage.py migrate && python /app/manage.py runserver 0.0.0.0:8001'
     ports:
       - 8001:8001
-    restart: "always"
+    restart: "no"
     depends_on:
       - clinic-db
     volumes:
       - ./auth:/app
+
+  specialist:
+    build:
+      context: ./specialist/
+    image: specialist
+    container_name: specialist
+    command: sh -c 'python /app/manage.py makemigrations && python /app/manage.py migrate && python /app/manage.py runserver 0.0.0.0:8002'
+    ports:
+      - 8002:8002
+    restart: "no"
+    depends_on:
+      - clinic-db
+    volumes:
+      - ./specialist:/app
+
+  specialty:
+    build:
+      context: ./specialty/
+    image: specialty
+    container_name: specialty
+    command: sh -c 'python /app/manage.py makemigrations && python /app/manage.py migrate && python /app/manage.py runserver 0.0.0.0:8003'
+    ports:
+      - 8003:8003
+    restart: "no"
+    depends_on:
+      - clinic-db
+    volumes:
+      - ./specialty:/app
+
+  appointment:
+    build:
+      context: ./appointment/
+    image: appointment
+    container_name: appointment
+    command: sh -c 'python /app/manage.py makemigrations && python /app/manage.py migrate && python /app/manage.py runserver 0.0.0.0:8004'
+    ports:
+      - 8004:8004
+    restart: "no"
+    depends_on:
+      - clinic-db
+    volumes:
+      - ./appointment:/app
 
   clinic-db:
     restart: "no"

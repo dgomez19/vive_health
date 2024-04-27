@@ -11,6 +11,4 @@ from rest_framework_jwt.authentication import JSONWebTokenAuthentication
 @authentication_classes([JSONWebTokenAuthentication,])
 @api_view(http_method_names=["POST"])
 def daniel(request):
-    print("daniel")
-    return Response({"message": "Email sent successfully"}, status=200)
-
+    return Response({"message": "PRUEBA LOGEADO"}, status=200)
