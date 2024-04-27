@@ -1,0 +1,31 @@
+version: "3.7"
+services:
+  auth:
+    build:
+      context: ./auth/
+    image: auth
+    container_name: auth
+    command: sh -c 'python /app/manage.py migrate && python /app/manage.py runserver 0.0.0.0:8001'
+    ports:
+      - 8001:8001
+    restart: "always"
+    depends_on:
+      - clinic-db
+    volumes:
+      - ./auth:/app
+
+  clinic-db:
+    restart: "no"
+    image: postgres:12
+    container_name: clinic-db
+    ports:
+      - 5435:5432
+    environment:
+      - POSTGRES_USER=clinic
+      - POSTGRES_PASSWORD=clinic
+      - POSTGRES_DB=clinic
+    volumes:
+      - clinic_postgresql_data_desarrollo:/var/lib/postgresql/data
+
+volumes:
+  clinic_postgresql_data_desarrollo:
