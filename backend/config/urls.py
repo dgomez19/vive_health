@@ -1,4 +1,4 @@
-"""base-project backend URL Configuration
+"""smartdoctor backend URL Configuration
 """
 from django.conf.urls import include
 from django.urls import path

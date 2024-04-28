@@ -9,7 +9,7 @@ DEBUG = False
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'base-project',
+        'NAME': '',
         'USER': 'datic@datic-app-db',
         'PASSWORD': '6y342z0VaOQa',
         'HOST': 'datic-app-db.postgres.database.azure.com',

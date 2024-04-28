@@ -12,7 +12,7 @@
             <div class="text-center q-pt-lg">
               <div class="col text-h6 ellipsis" style="line-height:1rem; margin-top: 15px;">
                 {{ !isFormRecover ? 'INICIAR SESIÓN' : 'RECUPERAR CLAVE'}} <br>
-                <span style="font-size: x-small;text-decoration: underline;">Base Project</span>
+                <span style="font-size: x-small;text-decoration: underline;">smartdoctor</span>
               </div>
             </div>
           </q-card-section>

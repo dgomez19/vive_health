@@ -1,6 +1,6 @@
-# Base Project
+# smartdoctor
 
-Base Project
+smartdoctor
 
 ## Install the dependencies
 ```bash

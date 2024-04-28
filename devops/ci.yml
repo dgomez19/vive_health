@@ -70,11 +70,11 @@ stages:
         steps:
         - task: SonarCloudPrepare@1
           inputs:
-            SonarCloud: 'sonarqube saas itagui'
-            organization: 'datic-itagui'
+            SonarCloud: 'sonarqube saas smartdoctor'
+            organization: 'smartdoctor-smartdoctor'
             scannerMode: 'CLI'
             configMode: 'manual'
-            cliProjectKey: 'datic-itagui_estructura-inicial'
+            cliProjectKey: 'smartdoctor-smartdoctor_estructura-inicial'
             cliProjectName: 'estructura-inicial'
             cliSources: '.'
         - task: SonarCloudAnalyze@1

@@ -1,4 +1,4 @@
-# Base Project
+# smartdoctor
 
 ## Development environment
 * Backend: Django + Postgresql
@@ -22,20 +22,20 @@ Now the application should be working when visiting the urls:
 * Frontend: http://127.0.0.1:8080/
 
 The connection data to the database are the following:
-* User: base-project
-* Base de datos: base-project
-* Password: base-project
+* User: smartdoctor
+* Base de datos: smartdoctor
+* Password: smartdoctor
 * host: 127.0.0.1
 * puerto: 5435
 
 ## To run django commands in the develop environment
 The command must be executed as follows:
 ```bash
-docker exec -it dev-base-project-backend python manage.py <commando>
+docker exec -it dev-smartdoctor-backend python manage.py <commando>
 ```
 Examples
 ```bash
-docker exec -it dev-base-project-backend python manage.py makemigrations
-docker exec -it dev-base-project-backend python manage.py migrate
-docker exec -it dev-base-project-backend python manage.py createsuperuser
+docker exec -it dev-smartdoctor-backend python manage.py makemigrations
+docker exec -it dev-smartdoctor-backend python manage.py migrate
+docker exec -it dev-smartdoctor-backend python manage.py createsuperuser
 ```

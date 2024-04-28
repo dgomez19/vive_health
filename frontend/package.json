@@ -1,9 +1,9 @@
 {
-  "name": "base-project",
+  "name": "smartdoctor",
   "version": "0.0.1",
-  "description": "Base Project",
-  "productName": "Base Project",
-  "author": "Dirección Administrativa de las TIC <desarrollotic@itagui.gov.co>",
+  "description": "smartdoctor",
+  "productName": "smartdoctor",
+  "author": "Daniel Gomez <daniel.gomez922@gmail.com>",
   "private": true,
   "scripts": {
     "lint": "eslint --ext .js,.vue ./",

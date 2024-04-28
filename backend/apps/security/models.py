@@ -43,7 +43,7 @@ class User(AbstractUser, TimeStampedModel):
         self.send_access_data(password)
 
     def send_access_data(self, password):
-        subject = 'Base Project - Datos de acceso'
+        subject = 'Smartdoctor - Datos de acceso'
         data = {
             'full_name': self.get_full_name(),
             'username': self.username,

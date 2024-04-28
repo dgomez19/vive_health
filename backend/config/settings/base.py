@@ -27,10 +27,11 @@ DEBUG = False
 
 TEMPLATE_DEBUG = DEBUG
 
-ALLOWED_HOSTS = ['base-project.itagui.gov.co', '52.149.245.134']
+ALLOWED_HOSTS = ['*']
 
 CORS_ORIGIN_ALLOW_ALL = False
-CORS_ORIGIN_WHITELIST = ['https://base-project.itagui.gov.co', 'http://52.149.245.134']
+CORS_ORIGIN_WHITELIST = ['https://smartdoctor.com',]
+
 CORS_ALLOW_CREDENTIALS = True
 
 DJANGO_APPS = [
@@ -127,7 +128,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
-SITE_URL = "https://base-project.itagui.gov.co/"
+SITE_URL = "http://127.0.0.1:8080/"
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'public')
 STATIC_URL = f'{SITE_URL}public/'
@@ -163,9 +164,9 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'in-v3.mailjet.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = '21bc2b99d5df0b1e1aedea753fa785b2'
-EMAIL_HOST_PASSWORD = 'a67d74706609501e65ab696442ec0bb6'
-DEFAULT_FROM_EMAIL = 'atencionalciudadano@itagui.gov.co'
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
+DEFAULT_FROM_EMAIL = ''
 
 FORMAT_DATETIME = '%Y-%m-%d %H:%M:%S'
 

@@ -3,7 +3,7 @@
     <q-header reveal :class="$q.dark.isActive ? 'header_dark' : 'header_normal'">
       <q-toolbar>
         <q-btn @click="left = !left" flat round dense icon="menu" class="q-mr-sm" />
-        <q-toolbar-title>Base Project</q-toolbar-title>
+        <q-toolbar-title>smartdoctor</q-toolbar-title>
         <q-btn class="q-mr-xs" flat round @click="$q.dark.toggle()"
                :icon="$q.dark.isActive ? 'nights_stay' : 'wb_sunny'" />
         <q-btn-dropdown round flat icon="person">
@@ -29,7 +29,7 @@
             <q-avatar>
               <img src="profile.png" alt="profile"/>
             </q-avatar>
-            <q-toolbar-title>base-project</q-toolbar-title>
+            <q-toolbar-title>smartdoctor</q-toolbar-title>
           </q-toolbar>
           <hr />
 
