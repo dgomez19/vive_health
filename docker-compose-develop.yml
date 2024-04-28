@@ -1,0 +1,49 @@
+version: "3.7"
+services:
+  dev-smartdoctor-frontend:
+    build:
+      context: ./frontend/
+      target: 'develop-stage'
+    image: dev-smartdoctor-frontend
+    container_name: dev-smartdoctor-frontend
+    command: sh -c 'yarn install && quasar d'
+    ports:
+      - 8080:8080
+    volumes:
+      - ./frontend:/app
+    restart: "no"
+    depends_on:
+      - dev-smartdoctor-backend
+  dev-smartdoctor-backend:
+    build:
+      dockerfile: Dockerfile
+      context: backend/
+      args:
+        requirements: requirements/develop.txt
+    image: dev-smartdoctor-backend
+    restart: "no"
+    container_name: dev-smartdoctor-backend
+    command: sh -c 'python /app/manage.py migrate && python /app/manage.py runserver
+      0.0.0.0:8000'
+    ports:
+      - 8000:8000
+    volumes:
+      - ./backend:/app
+    environment:
+      - DJANGO_SETTINGS_MODULE=config.settings.develop
+    depends_on:
+      - dev-smartdoctor-db
+  dev-smartdoctor-db:
+    restart: "no"
+    image: postgres:alpine
+    container_name: dev-smartdoctor-db
+    ports:
+      - 5435:5432
+    environment:
+      - POSTGRES_USER=smartdoctor
+      - POSTGRES_PASSWORD=smartdoctor
+      - POSTGRES_DB=smartdoctor
+    volumes:
+      - smartdoctor_postgresql_data_develop:/var/lib/postgresql/data
+volumes:
+  smartdoctor_postgresql_data_develop:
