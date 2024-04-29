@@ -2,15 +2,13 @@ from rest_framework import filters
 
 from rest_framework import status
 
-from rest_framework.views import APIView, Response
+from rest_framework.views import Response
 
 from rest_framework.generics import (
     ListCreateAPIView,
     RetrieveUpdateDestroyAPIView,
     ListAPIView
 )
-
-from rest_framework.permissions import IsAuthenticated, BasePermission
 
 from django_filters.rest_framework import DjangoFilterBackend
 
@@ -48,8 +46,7 @@ class PatientListCreate(ListCreateAPIView):
         return PatientListSerializer
 
 
-class PatientRetrieveUpdateDestroyAPIView(ProtectedForeignKeyDeleteMixin,
-                                            RetrieveUpdateDestroyAPIView):
+class PatientRetrieveUpdateDestroyAPIView(ProtectedForeignKeyDeleteMixin, RetrieveUpdateDestroyAPIView):
     queryset = Patient.objects.all()
     serializer_class = PatientListSerializer
     lookup_field = "uuid"
@@ -67,8 +64,7 @@ class SpecialistListCreate(ListCreateAPIView):
     filter_fields = ('names', 'surnames', 'document')
 
 
-class SpecialistRetrieveUpdateDestroyAPIView(ProtectedForeignKeyDeleteMixin,
-                                            RetrieveUpdateDestroyAPIView):
+class SpecialistRetrieveUpdateDestroyAPIView(ProtectedForeignKeyDeleteMixin, RetrieveUpdateDestroyAPIView):
     queryset = Specialist.objects.all()
     serializer_class = SpecialistSerializer
     lookup_field = "uuid"

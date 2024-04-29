@@ -3,12 +3,6 @@ from rest_framework.test import APITestCase
 
 from rest_framework import status
 
-from django.contrib.auth.models import User
-
-from rest_framework.test import APIRequestFactory
-
-from django.contrib.auth.models import User
-
 from apps.security.models import User
 
 from apps.appointment.models import Patient, Specialist, Specialty, Appointment
@@ -49,7 +43,6 @@ class MyModelAPITest(APITestCase):
 
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
-
     def test_birthdate_error(self):
         """
         Error al crear paciente por fecha de nacimiento
@@ -68,7 +61,6 @@ class MyModelAPITest(APITestCase):
 
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
 
-
     def test_fields_obligatories(self):
         """
         Error al crear paciente por campos obligatorios vacios
@@ -77,7 +69,7 @@ class MyModelAPITest(APITestCase):
             'names': '',
             'surnames': '',
             'birthdate': '1980-02-01',
-            'address': 'ITAGUI - COLOMBIA',
+            'address': 'Sabaeta - COLOMBIA',
             'cell_phone': '',
             'document': ''
         }
@@ -86,14 +78,16 @@ class MyModelAPITest(APITestCase):
 
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
 
-
     def test_fields_max_length(self):
         """
         Error al crear paciente por campos obligatorios vacios
         """
-        text_length = f'ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ \
-            ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ \
-            ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ'
+        text_length = 'ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEF \
+        GHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ \
+            ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRST \
+            UVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ \
+            ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUV \
+            WXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
         data = {
             'names': text_length,
@@ -107,7 +101,6 @@ class MyModelAPITest(APITestCase):
         response = self.client.post(self.url, data)
 
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
-
 
     def test_update_patient(self):
         """
@@ -147,8 +140,6 @@ class MyModelAPITest(APITestCase):
 
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
-
-
     def test_appointment_create(self):
         """
         Agendar una cita medica
@@ -169,7 +160,6 @@ class MyModelAPITest(APITestCase):
 
         response = self.client.post(url, data)
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-
 
     def test_appointment_busy(self):
         """
@@ -192,7 +182,6 @@ class MyModelAPITest(APITestCase):
         response = self.client.post(url, data)
 
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
-
 
     def create_appointment(self):
         patient = self.create_patient('5')
@@ -219,7 +208,6 @@ class MyModelAPITest(APITestCase):
 
         return patient
 
-
     def create_specialist(self, document):
         specialist = Specialist.objects.create(
             names='pruebas',
@@ -231,7 +219,6 @@ class MyModelAPITest(APITestCase):
         )
 
         return specialist
-
 
     def create_specialty(self):
         specialty = Specialty.objects.create(

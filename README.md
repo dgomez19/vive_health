@@ -38,4 +38,5 @@ Examples
 docker exec -it dev-smartdoctor-backend python manage.py makemigrations
 docker exec -it dev-smartdoctor-backend python manage.py migrate
 docker exec -it dev-smartdoctor-backend python manage.py createsuperuser
+docker exec -it dev-smartdoctor-backend python manage.py test
 ```

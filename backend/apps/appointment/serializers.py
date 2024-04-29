@@ -11,6 +11,7 @@ from .utils import (
     get_work_schedule,
 )
 
+
 class SpecialistSerializer(serializers.ModelSerializer):
 
     class Meta:
@@ -47,14 +48,16 @@ class SpecialistAvailableTimesSerializer(serializers.ModelSerializer):
         times_busy = None
 
         if self.context.get("request").GET.get('date_appointment'):
-            times_busy = obj.appointment.filter(date_appointment=self.context.get("request").GET.get('date_appointment'))
+            times_busy = obj.appointment.filter(
+                date_appointment=self.context.get("request").GET.get('date_appointment')
+            )
 
             time_available = get_work_schedule()
 
             for busy in times_busy:
                 posicion = 0
 
-                while posicion <len(time_available):
+                while posicion < len(time_available):
                     if time_available[posicion] == str(busy.hour_appointment)[0:5]:
                         time_available.pop(posicion)
                     else:
@@ -149,7 +152,8 @@ class AppointmentCreateSerializer(serializers.ModelSerializer):
 
         if appointment:
             raise serializers.ValidationError(
-                detail=f"EL ESPECIALISTA {appointment.specialist.names} YA CUENTA CON UNA CITA PARA LAS FECHAS SELECCIONADAS."
+                detail=f"EL ESPECIALISTA {appointment.specialist.names} YA \
+                CUENTA CON UNA CITA PARA LAS FECHAS SELECCIONADAS."
             )
 
         return attrs

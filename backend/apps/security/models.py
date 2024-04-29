@@ -2,9 +2,6 @@ import uuid
 
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-from django.conf import settings
-from django.template.loader import render_to_string
-from django.core.mail import send_mail
 from model_utils.models import TimeStampedModel
 from .managers import UserManager
 
@@ -27,7 +24,3 @@ class User(AbstractUser, TimeStampedModel):
 
     def __str__(self):
         return self.email
-
-    def save(self, *args, **kwargs):
-        creating = not self.pk
-        super(User, self).save(*args, **kwargs)
