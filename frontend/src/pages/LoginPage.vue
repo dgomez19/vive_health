@@ -78,9 +78,3 @@ const recuperarClave = async () => {
   isFormRecover.value = false
 }
 </script>
-
-<style>
-.bg-image {
-  background-image: linear-gradient(135deg, #025ba9 0%, #e5b2ca 100%);
-}
-</style>
